@@ -6,7 +6,6 @@ The goal is to translate human requests into cURL requests.
 
 # How to use?
 
-
 - Fill the environment variables of the services you will be using in `.env.example`.
 - Open a new terminal and source that env file.
 - Paste `prompt.txt` into your assistant.
@@ -17,6 +16,7 @@ The goal is to translate human requests into cURL requests.
 
 # Services
 
+- GitHub
 - Nextcloud
 - Cloudflare
 
@@ -24,7 +24,7 @@ The goal is to translate human requests into cURL requests.
 
 **Prompt**
 
-Create a folder
+Create a folder named movies
 
 **Response**
 
