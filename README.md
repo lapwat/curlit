@@ -6,13 +6,56 @@ The goal is to translate human requests into cURL requests.
 
 # How to use?
 
-- Fill the environment variables of the services you will be using in `.env.example`.
+- Create a your custom `.env` similar to `.env.example`.
 - Open a new terminal and source that env file.
-- Paste `prompt.txt` into your assistant.
+- Paste `prompt.txt` into your assistant (update env var references if needed) 
 - Ask a question to your assistant.
 - Copy the response of your assistant in the terminal.
 - Read the command (optional)
 - Press Enter
+
+# Automatic command executions
+
+It uses a fork of `kharvd/gpt-cli` --> `lapwat/gpt-cli`. It detects code blocks in your assistant responses and ask you if you'd like to execute them.
+
+At least `OPENAI_API_KEY` in env file is mandatory here.
+
+```sh
+# build docker container
+docker build -t curlit .`
+
+# run docker container with your custom env
+docker run -it --env-file=.env curlit
+```
+
+# Init the prompt
+
+```
+Hi! I'm here to help. Type q or Ctrl-D to exit, c or Ctrl-C to clear the
+conversation, r or Ctrl-R to re-generate the last response. To enter multi-line
+mode, enter a backslash \ followed by a new line. Exit the multi-line mode by
+pressing ESC and then Enter (Meta+Enter).
+
+> # Paste prompt.txt here
+
+Ready!
+
+> create a github repo named curlit
+
+ curl -H "Authorization: token $GITHUB_ACCESS_TOKEN" \
+      --request POST \
+      --data '{"name":"curlit"}' \
+      https://api.github.com/user/repos
+
+
+Code block:
+curl -H "Authorization: token $GITHUB_ACCESS_TOKEN" \
+     --request POST \
+     --data '{"name":"curlit"}' \
+     https://api.github.com/user/repos
+
+Do you want to run this code block? (y/n) y
+```
 
 # Services
 
