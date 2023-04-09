@@ -15,6 +15,7 @@ RUN git clone https://github.com/lapwat/gpt-cli.git /gpt-cli
 
 RUN cd /gpt-cli && \
     pip3 install --no-cache-dir --ignore-installed -r requirements.txt
+COPY .gptrc /root
 
 # Set the working directory
 WORKDIR /app
